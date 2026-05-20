@@ -12,7 +12,7 @@ class Flux2KleinImageEdit:
             "required": {
                 "clip": ("CLIP", {"tooltip": "CLIP模型，用于编码文本和图像"}),
                 "vae": ("VAE", {"tooltip": "VAE模型，用于编码图像"}),
-                "inputcount": ("INT", {"default": 1, "min": 1, "max": 10, "step": 1, "tooltip": "图像输入数量"}),
+                "inputcount": (["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"], {"default": "1", "tooltip": "图像输入数量"}),
                 "width": ("INT", {"default": 1024, "min": 512, "max": 4096, "step": 8, "tooltip": "输出图像宽度"}),
                 "height": ("INT", {"default": 1024, "min": 512, "max": 4096, "step": 8, "tooltip": "输出图像高度"}),
                 "batch_size": ("INT", {"default": 1, "min": 1, "max": 64, "step": 1, "tooltip": "批量大小"}),
@@ -29,13 +29,16 @@ class Flux2KleinImageEdit:
     RETURN_NAMES = ("positive", "negative", "latent")
     FUNCTION = "encode"
     CATEGORY = "advanced/conditioning"
-    DESCRIPTION = "Flux2 Klein 图像编辑 - 动态增减图像输入（1-10张）"
+    DESCRIPTION = "Flux2 Klein 图像编辑 - 动态增减图像输入（1-20张）"
 
     def encode(self, clip, vae, inputcount, width, height, batch_size, prompt,
                image_1=None, unique_id=None, **kwargs):
         
         if vae is None:
             raise RuntimeError("VAE是必需的，请连接VAE加载器。")
+        
+        # 将字符串转换为整数
+        inputcount = int(inputcount)
         
         # 收集所有图像：image_1 加上动态传入的 image_2..image_N
         images = []
