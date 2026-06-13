@@ -12,12 +12,12 @@ class Flux2KleinImageEdit:
             "required": {
                 "clip": ("CLIP", {"tooltip": "CLIP模型，用于编码文本和图像"}),
                 "vae": ("VAE", {"tooltip": "VAE模型，用于编码图像"}),
-                "inputcount": (["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"], {"default": "1", "tooltip": "图像输入数量"}),
-                "width": ("INT", {"default": 1024, "min": 512, "max": 4096, "step": 8, "tooltip": "输出图像宽度"}),
-                "height": ("INT", {"default": 1024, "min": 512, "max": 4096, "step": 8, "tooltip": "输出图像高度"}),
-                "batch_size": ("INT", {"default": 1, "min": 1, "max": 64, "step": 1, "tooltip": "批量大小"}),
-                "prompt": ("STRING", {"multiline": True, "dynamicPrompts": True, "tooltip": "正向提示词"}),
-                "image_1": ("IMAGE", {"tooltip": "参考图像1"}),
+                "inputcount": (["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"], {"default": "1", "tooltip": "图像输入数量", "display_name": "图像输入数量"}),
+                "width": ("INT", {"default": 1024, "min": 512, "max": 4096, "step": 8, "tooltip": "输出图像宽度", "display_name": "宽度"}),
+                "height": ("INT", {"default": 1024, "min": 512, "max": 4096, "step": 8, "tooltip": "输出图像高度", "display_name": "高度"}),
+                "batch_size": ("INT", {"default": 1, "min": 1, "max": 64, "step": 1, "tooltip": "批量大小", "display_name": "批次"}),
+                "prompt": ("STRING", {"multiline": True, "dynamicPrompts": True, "tooltip": "正向提示词", "display_name": "提示词"}),
+                "image_1": ("IMAGE", {"tooltip": "参考图像1", "display_name": "参考图像1"}),
             },
             "optional": {},
             "hidden": {
