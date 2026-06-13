@@ -87,6 +87,15 @@ app.registerExtension({
             console.log("[Flux2Klein] onNodeCreated");
             const self = this;
             
+            // 修改 prompt 占位符
+            setTimeout(() => {
+                const promptWidget = this.widgets?.find(w => w.name === "prompt");
+                if (promptWidget?.inputEl) {
+                    promptWidget.inputEl.placeholder = "请输入提示词...";
+                    promptWidget.inputEl.style.fontStyle = "italic";
+                }
+            }, 100);
+            
             const inputcountWidget = this.widgets?.find(w => w.name === "inputcount");
             if (inputcountWidget) {
                 setTimeout(() => {
